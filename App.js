@@ -5,8 +5,8 @@ import HomeScreen from './Components/HomeScreen';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <HomeScreen />
+    <View >
+      <HomeScreen/>
     </View>
   );
 }
