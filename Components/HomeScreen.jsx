@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, StyleSheet } from 'react-native';
-import { Header, Text, Button } from 'react-native-elements';
+import { Header, Button } from 'react-native-elements';
 import Dictionary from './Dictionary';
 import Thesaurus from './Thesaurus';
 
