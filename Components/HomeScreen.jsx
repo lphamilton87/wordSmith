@@ -18,7 +18,7 @@ const HomeScreen = () => {
   return (
     <View style={styles.container}>
       <Header
-        centerComponent={{ text: isDictionary ? 'Dictionary' : 'Thesaurus', style: { color: '#fff', fontSize: 18 } }}
+        centerComponent={{ text: isDictionary ? 'Dictionary' : 'Thesaurus', style: { color: '#fff', fontSize: 30 } }}
         containerStyle={styles.header}
       />
       <View style={styles.toggleButtons}>
@@ -35,7 +35,9 @@ const HomeScreen = () => {
           titleStyle={[styles.buttonText, !isDictionary && styles.selectedButtonText]}
         />
       </View>
+      <View>
       {isDictionary ? <Dictionary /> : <Thesaurus />}
+      </View>
     </View>
   );
 };
@@ -47,11 +49,12 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         flexDirection: 'column',
         flexWrap: 'wrap',
+        backgroundColor: '#eaedf3',
     },
   header: {
     width: '100%',
     height: '15%',
-    backgroundColor: '#407394',
+    backgroundColor: '#6ba6d5',
     borderBottomWidth: 0,
   },
   toggleButtons: {
@@ -60,13 +63,14 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   button: {
-    backgroundColor: 'gray',
+    backgroundColor: '#9a9a9a',
     borderRadius: 20,
     paddingVertical: 10,
     paddingHorizontal: 20,
+    borderWidth: 1,
   },
   selectedButton: {
-    backgroundColor: 'blue',
+    backgroundColor: '#7bb659',
   },
   buttonText: {
     color: 'white',
@@ -75,7 +79,6 @@ const styles = StyleSheet.create({
   selectedButtonText: {
     fontWeight: 'bold',
   },
-
 })
 
 export default HomeScreen
