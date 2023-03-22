@@ -5,11 +5,14 @@ const Dictionary = () => {
 const [search, setSearch] = useState('')
 const [results, setResults] = useState([])
 
-const searchDictionary = () => {
+const handleSearch = () => {
     fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${search}`)
       .then(response => response.json())
-      .then(data => setResults(data))
-      .catch(error => console.error(error));
+      .then(data => {
+        const meanings = data[0].meanings
+        setResults(meanings)
+      } )
+      .catch(error => console.error(error))
       console.log(results)
   };
 
@@ -18,11 +21,11 @@ const searchDictionary = () => {
       <TextInput
         value={search}
         onChangeText={setSearch}
-        placeholder="Enter a word"
+        placeholder="Enter a word to search"
       />
-      <Button title="Search" onPress={searchDictionary} />
-      {results.map((result) => (
-        <Text>{result.word}</Text>
+      <Button title="Search" onPress={handleSearch} />
+      {results.map((result, index) => (
+          <Text key={index}>{result.definitions[0].definition}</Text>
       ))}
     </View>
   );
