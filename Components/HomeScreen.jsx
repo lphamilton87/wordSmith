@@ -15,10 +15,12 @@ const HomeScreen = () => {
     setIsDictionary(false)
   };
 
+  const appName = "wordSmith"
+
   return (
     <View style={styles.container}>
       <Header
-        centerComponent={{ text: isDictionary ? 'Dictionary' : 'Thesaurus', style: { color: '#fff', fontSize: 30 } }}
+        centerComponent={{ text: appName, style: { color: '#fff', fontSize: 40, fontStyle: 'italic', fontWeight: 'bold' } }}
         containerStyle={styles.header}
       />
       <View style={styles.toggleButtons}>

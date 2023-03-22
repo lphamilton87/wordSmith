@@ -4,6 +4,7 @@ import { View, TextInput, Button, Text, StyleSheet } from 'react-native';
 const Dictionary = () => {
 const [search, setSearch] = useState('')
 const [results, setResults] = useState([])
+const [wordTitle, setWordTitle] = useState('')
 
 const handleSearch = () => {
     fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${search}`)
@@ -13,6 +14,7 @@ const handleSearch = () => {
         setResults(meanings)
       } )
       .catch(error => console.error(error))
+      setWordTitle(search)
       setSearch('')
   };
 
@@ -26,9 +28,10 @@ const handleSearch = () => {
       />
       <Button buttonStyle={styles.button}
       title="Search" onPress={handleSearch} />
+      <Text style={styles.title}>{wordTitle}</Text>
       {results.map((result, index) => (
           <Text 
-          styles={styles.text}
+          style={styles.words}
           key={index}>{result.definitions[0].definition}</Text>
       ))}
     </View>
@@ -37,7 +40,7 @@ const handleSearch = () => {
 
     const styles = StyleSheet.create({
         searchBar: {
-            borderRadious: 10,
+            borderRadious: 0,
             justifyContent: 'center',
             margin: 10,
             color: '#000',
@@ -55,17 +58,14 @@ const handleSearch = () => {
             flexWrap: 'wrap',
             backgroundColor: '#eaedf3'
         },
-        searchBar: {
-            margin: 10,
-            color: '#000',
-            borderColor: '#9a9a9a',
-            backgroundColor: 'white',
-            borderWidth: 1,
-            height: 45,
-            width: 200,
-            paddingHorizontal: 10,
-            fontSize: 18,
+        title: {
+            fontWeight: 'bold',
+            fontSize: 22,
+            textTransform: 'uppercase',
         },
+        words: {
+            fontStyle: 'italic',
+        }
     })
 
 export default Dictionary;
